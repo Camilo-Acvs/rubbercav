@@ -1,327 +1,67 @@
 var SEARCH_INDEX = [
-  {
-    "file": "coiled-tubing-stripper-rubber.html",
-    "name": "Coiled Tubing Stripper Rubber",
-    "cat": "Industria Petrolera"
-  },
-  {
-    "file": "rod-stripper-rubber.html",
-    "name": "Rod Stripper Rubber",
-    "cat": "Industria Petrolera"
-  },
-  {
-    "file": "swap-cups.html",
-    "name": "Swab Cups",
-    "cat": "Industria Petrolera"
-  },
-  {
-    "file": "packing-mud-bucked.html",
-    "name": "Packing Mud Bucked",
-    "cat": "Industria Petrolera"
-  },
-  {
-    "file": "drill-pipe-wipers.html",
-    "name": "Drill Pipe Wipers",
-    "cat": "Industria Petrolera"
-  },
-  {
-    "file": "oil-saver.html",
-    "name": "Oil Saver",
-    "cat": "Industria Petrolera"
-  },
-  {
-    "file": "hammer-unions-seals-1502.html",
-    "name": "Hammer Union Seals 1502",
-    "cat": "Industria Petrolera"
-  },
-  {
-    "file": "diaphragms.html",
-    "name": "Diaphragms",
-    "cat": "Industria Petrolera"
-  },
-  {
-    "file": "valve-cover-gasket-.html",
-    "name": "Valve Cover Gasket",
-    "cat": "Industria Petrolera"
-  },
-  {
-    "file": "packing-seals.html",
-    "name": "Packing Seals",
-    "cat": "Industria Petrolera"
-  },
-  {
-    "file": "mechanical-seals.html",
-    "name": "Mechanical Seals",
-    "cat": "Industria Petrolera"
-  },
-  {
-    "file": "ptfe-seals.html",
-    "name": "PTFE Seals",
-    "cat": "Industria Petrolera"
-  },
-  {
-    "file": "mongoose-shale-shaker.html",
-    "name": "Mongoose Shale Shaker",
-    "cat": "Industria Petrolera"
-  },
-  {
-    "file": "shale-shakers-gaskets.html",
-    "name": "Shale Shakers Gaskets",
-    "cat": "Industria Petrolera"
-  },
-  {
-    "file": "rubber-support-shale.html",
-    "name": "Rubber Support Shale",
-    "cat": "Industria Petrolera"
-  },
-  {
-    "file": "pipe-rubber-gaskets.html",
-    "name": "Pipe Rubber Gaskets",
-    "cat": "Industria Petrolera"
-  },
-  {
-    "file": "pad-rubber-.html",
-    "name": "Pad Rubber",
-    "cat": "Industria Petrolera"
-  },
-  {
-    "file": "thread-protectors.html",
-    "name": "Thread Protectors",
-    "cat": "Industria Petrolera"
-  },
-  {
-    "file": "regan-rubber-.html",
-    "name": "Regan Rubber",
-    "cat": "Industria Petrolera"
-  },
-  {
-    "file": "sucker-rod-wipers.html",
-    "name": "Sucker Rod Wipers",
-    "cat": "Industria Petrolera"
-  },
-  {
-    "file": "vee-packing-stuffing-box.html",
-    "name": "Vee Packing Stuffing Box",
-    "cat": "Industria Petrolera"
-  },
-  {
-    "file": "valve-cover-seal.html",
-    "name": "Valve Cover Seal",
-    "cat": "Industria Petrolera"
-  },
-  {
-    "file": "rubber-piston-cup.html",
-    "name": "Rubber Piston Cup",
-    "cat": "Industria Petrolera"
-  },
-  {
-    "file": "valve-insert.html",
-    "name": "Valve Insert",
-    "cat": "Industria Petrolera"
-  },
-  {
-    "file": "pack-off---line-wiper-rubbers.html",
-    "name": "Pack Off & Line Wiper Rubbers",
-    "cat": "Industria Petrolera"
-  },
-  {
-    "file": "stuffing-box-packing.html",
-    "name": "Stuffing Box Packing",
-    "cat": "Industria Petrolera"
-  },
-  {
-    "file": "v-packing-seals.html",
-    "name": "V-Packing Seals",
-    "cat": "Industria Petrolera"
-  },
-  {
-    "file": "vee-packing-seals.html",
-    "name": "Vee Packing Seals",
-    "cat": "Industria Petrolera"
-  },
-  {
-    "file": "ram-bop-configuration.html",
-    "name": "Ram BOP Configuration",
-    "cat": "Industria Petrolera"
-  },
-  {
-    "file": "inner-seal-bop-.html",
-    "name": "Inner Seal BOP",
-    "cat": "Industria Petrolera"
-  },
-  {
-    "file": "outer--seal-bop-.html",
-    "name": "Outer Seal BOP",
-    "cat": "Industria Petrolera"
-  },
-  {
-    "file": "oil-saver-1.html",
-    "name": "Oil Saver",
-    "cat": "Industria Petrolera"
-  },
-  {
-    "file": "ram-preventer-rubber.html",
-    "name": "Ram Preventer Rubber",
-    "cat": "Industria Petrolera"
-  },
-  {
-    "file": "bop-ram-rod.html",
-    "name": "BOP Ram Rod",
-    "cat": "Industria Petrolera"
-  },
-  {
-    "file": "bop-ram-1--.html",
-    "name": "BOP Ram 1\"",
-    "cat": "Industria Petrolera"
-  },
-  {
-    "file": "diaphragms-.html",
-    "name": "Diaphragms",
-    "cat": "Industria Petrolera"
-  },
-  {
-    "file": "hammer-unions-seals-1502-1.html",
-    "name": "Hammer Unions Seals 1502",
-    "cat": "Industria Petrolera"
-  },
-  {
-    "file": "packer-element.html",
-    "name": "Packer Element",
-    "cat": "Industria Petrolera"
-  },
-  {
-    "file": "piston-seals.html",
-    "name": "Piston Seals",
-    "cat": "Industria Petrolera"
-  },
-  {
-    "file": "valve-cover-gasket--1.html",
-    "name": "Valve Cover Gasket",
-    "cat": "Industria Petrolera"
-  },
-  {
-    "file": "buje-5--rueda-nuevo-holland.html",
-    "name": "Buje 5ª Rueda Nuevo Holland",
-    "cat": "Industria Automotriz"
-  },
-  {
-    "file": "corbatin-barra-tensora.html",
-    "name": "Corbatín Barra Tensora",
-    "cat": "Industria Automotriz"
-  },
-  {
-    "file": "buje-suspension-primaax.html",
-    "name": "Buje Suspensión PRIMAAX",
-    "cat": "Industria Automotriz"
-  },
-  {
-    "file": "bujes-quinta-rueda-holland-.html",
-    "name": "Bujes Quinta Rueda Holland",
-    "cat": "Industria Automotriz"
-  },
-  {
-    "file": "soportes-y-bujes-en-nylon.html",
-    "name": "Soportes y Bujes en Nylon",
-    "cat": "Industria Automotriz"
-  },
-  {
-    "file": "buje-quinta-rueda-fontaine.html",
-    "name": "Buje Quinta Rueda Fontaine",
-    "cat": "Industria Automotriz"
-  },
-  {
-    "file": "guia-capo-kenworth.html",
-    "name": "Guía Capó Kenworth",
-    "cat": "Industria Automotriz"
-  },
-  {
-    "file": "buje-quinta-rueda-nylon-y-bronce.html",
-    "name": "Buje Quinta Rueda Nylon y Bronce",
-    "cat": "Industria Automotriz"
-  },
-  {
-    "file": "soporte-motor-kenworth.html",
-    "name": "Soporte Motor Kenworth",
-    "cat": "Industria Automotriz"
-  },
-  {
-    "file": "bujes-tensor-y-balancin.html",
-    "name": "Bujes Tensor y Balancín",
-    "cat": "Industria Automotriz"
-  },
-  {
-    "file": "media-luna-cauho-y-nylon.html",
-    "name": "Media Luna Caucho y Nylon",
-    "cat": "Industria Automotriz"
-  },
-  {
-    "file": "soporte-dite---telefono-.html",
-    "name": "Soporte Dite (Teléfono)",
-    "cat": "Industria Automotriz"
-  },
-  {
-    "file": "gasket-manhole-20--16--dite.html",
-    "name": "Gasket Manhole 20\"-16\" Dite",
-    "cat": "Industria Automotriz"
-  },
-  {
-    "file": "gasket-manhole-16--10-inca.html",
-    "name": "Gasket Manhole 16\" 10\" INCA",
-    "cat": "Industria Automotriz"
-  },
-  {
-    "file": "gasket-manhole-20-16--l.html",
-    "name": "Gasket Manhole 20\"16\" L",
-    "cat": "Industria Automotriz"
-  },
-  {
-    "file": "gasket-manhole-20--17--national-.html",
-    "name": "Gasket Manhole 20\" 17\" (National)",
-    "cat": "Industria Automotriz"
-  },
-  {
-    "file": "apoyo-compuesto-en-neopreno.html",
-    "name": "Apoyo Compuesto en Neopreno (Refuerzo Interno)",
-    "cat": "Construcción y Minería"
-  },
-  {
-    "file": "apoyo-compuesto--en-neopreno_.html",
-    "name": "Apoyo Compuesto en Neopreno (Refuerzo Externo)",
-    "cat": "Construcción y Minería"
-  },
-  {
-    "file": "apoyo-simple-.html",
-    "name": "Apoyo Simple",
-    "cat": "Construcción y Minería"
-  },
-  {
-    "file": "topes-para-muelle.html",
-    "name": "Topes para Muelle",
-    "cat": "Construcción y Minería"
-  },
-  {
-    "file": "bridas.html",
-    "name": "Bridas",
-    "cat": "Construcción y Minería"
-  },
-  {
-    "file": "empaque-para-mezcladora.html",
-    "name": "Empaque para Mezcladora",
-    "cat": "Construcción y Minería"
-  },
-  {
-    "file": "planchas-anti-desgaste-dentadas.html",
-    "name": "Planchas Anti Desgaste Dentadas",
-    "cat": "Construcción y Minería"
-  },
-  {
-    "file": "planchas-anti-desgaste-.html",
-    "name": "Planchas Anti Desgaste",
-    "cat": "Construcción y Minería"
-  },
-  {
-    "file": "barras--de-impacto-.html",
-    "name": "Barras de Impacto",
-    "cat": "Construcción y Minería"
-  }
+  { "file": "coiled-tubing-stripper-rubber.html",   "name": "Coiled Tubing Stripper Rubber",                        "nameEn": "Coiled Tubing Stripper Rubber",                       "cat": "Industria Petrolera",     "catEn": "Oil & Gas Industry" },
+  { "file": "rod-stripper-rubber.html",             "name": "Rod Stripper Rubber",                                  "nameEn": "Rod Stripper Rubber",                                 "cat": "Industria Petrolera",     "catEn": "Oil & Gas Industry" },
+  { "file": "swap-cups.html",                       "name": "Swab Cups",                                            "nameEn": "Swab Cups",                                           "cat": "Industria Petrolera",     "catEn": "Oil & Gas Industry" },
+  { "file": "packing-mud-bucked.html",              "name": "Packing Mud Bucked",                                   "nameEn": "Packing Mud Bucked",                                  "cat": "Industria Petrolera",     "catEn": "Oil & Gas Industry" },
+  { "file": "drill-pipe-wipers.html",               "name": "Drill Pipe Wipers",                                    "nameEn": "Drill Pipe Wipers",                                   "cat": "Industria Petrolera",     "catEn": "Oil & Gas Industry" },
+  { "file": "oil-saver.html",                       "name": "Oil Saver",                                            "nameEn": "Oil Saver",                                           "cat": "Industria Petrolera",     "catEn": "Oil & Gas Industry" },
+  { "file": "hammer-unions-seals-1502.html",        "name": "Hammer Union Seals 1502",                              "nameEn": "Hammer Union Seals 1502",                             "cat": "Industria Petrolera",     "catEn": "Oil & Gas Industry" },
+  { "file": "diaphragms.html",                      "name": "Diaphragms",                                           "nameEn": "Diaphragms",                                          "cat": "Industria Petrolera",     "catEn": "Oil & Gas Industry" },
+  { "file": "valve-cover-gasket-.html",             "name": "Valve Cover Gasket",                                   "nameEn": "Valve Cover Gasket",                                  "cat": "Industria Petrolera",     "catEn": "Oil & Gas Industry" },
+  { "file": "packing-seals.html",                   "name": "Packing Seals",                                        "nameEn": "Packing Seals",                                       "cat": "Industria Petrolera",     "catEn": "Oil & Gas Industry" },
+  { "file": "mechanical-seals.html",                "name": "Mechanical Seals",                                     "nameEn": "Mechanical Seals",                                    "cat": "Industria Petrolera",     "catEn": "Oil & Gas Industry" },
+  { "file": "ptfe-seals.html",                      "name": "PTFE Seals",                                           "nameEn": "PTFE Seals",                                          "cat": "Industria Petrolera",     "catEn": "Oil & Gas Industry" },
+  { "file": "mongoose-shale-shaker.html",           "name": "Mongoose Shale Shaker",                                "nameEn": "Mongoose Shale Shaker",                               "cat": "Industria Petrolera",     "catEn": "Oil & Gas Industry" },
+  { "file": "shale-shakers-gaskets.html",           "name": "Shale Shakers Gaskets",                                "nameEn": "Shale Shakers Gaskets",                               "cat": "Industria Petrolera",     "catEn": "Oil & Gas Industry" },
+  { "file": "rubber-support-shale.html",            "name": "Rubber Support Shale",                                 "nameEn": "Rubber Support Shale",                                "cat": "Industria Petrolera",     "catEn": "Oil & Gas Industry" },
+  { "file": "pipe-rubber-gaskets.html",             "name": "Pipe Rubber Gaskets",                                  "nameEn": "Pipe Rubber Gaskets",                                 "cat": "Industria Petrolera",     "catEn": "Oil & Gas Industry" },
+  { "file": "pad-rubber-.html",                     "name": "Pad Rubber",                                           "nameEn": "Pad Rubber",                                          "cat": "Industria Petrolera",     "catEn": "Oil & Gas Industry" },
+  { "file": "thread-protectors.html",               "name": "Thread Protectors",                                    "nameEn": "Thread Protectors",                                   "cat": "Industria Petrolera",     "catEn": "Oil & Gas Industry" },
+  { "file": "regan-rubber-.html",                   "name": "Regan Rubber",                                         "nameEn": "Regan Rubber",                                        "cat": "Industria Petrolera",     "catEn": "Oil & Gas Industry" },
+  { "file": "sucker-rod-wipers.html",               "name": "Sucker Rod Wipers",                                    "nameEn": "Sucker Rod Wipers",                                   "cat": "Industria Petrolera",     "catEn": "Oil & Gas Industry" },
+  { "file": "vee-packing-stuffing-box.html",        "name": "Vee Packing Stuffing Box",                             "nameEn": "Vee Packing Stuffing Box",                            "cat": "Industria Petrolera",     "catEn": "Oil & Gas Industry" },
+  { "file": "valve-cover-seal.html",                "name": "Valve Cover Seal",                                     "nameEn": "Valve Cover Seal",                                    "cat": "Industria Petrolera",     "catEn": "Oil & Gas Industry" },
+  { "file": "rubber-piston-cup.html",               "name": "Rubber Piston Cup",                                    "nameEn": "Rubber Piston Cup",                                   "cat": "Industria Petrolera",     "catEn": "Oil & Gas Industry" },
+  { "file": "valve-insert.html",                    "name": "Valve Insert",                                         "nameEn": "Valve Insert",                                        "cat": "Industria Petrolera",     "catEn": "Oil & Gas Industry" },
+  { "file": "pack-off---line-wiper-rubbers.html",   "name": "Pack Off & Line Wiper Rubbers",                        "nameEn": "Pack Off & Line Wiper Rubbers",                       "cat": "Industria Petrolera",     "catEn": "Oil & Gas Industry" },
+  { "file": "stuffing-box-packing.html",            "name": "Stuffing Box Packing",                                 "nameEn": "Stuffing Box Packing",                                "cat": "Industria Petrolera",     "catEn": "Oil & Gas Industry" },
+  { "file": "v-packing-seals.html",                 "name": "V-Packing Seals",                                      "nameEn": "V-Packing Seals",                                     "cat": "Industria Petrolera",     "catEn": "Oil & Gas Industry" },
+  { "file": "vee-packing-seals.html",               "name": "Vee Packing Seals",                                    "nameEn": "Vee Packing Seals",                                   "cat": "Industria Petrolera",     "catEn": "Oil & Gas Industry" },
+  { "file": "ram-bop-configuration.html",           "name": "Ram BOP Configuration",                                "nameEn": "Ram BOP Configuration",                               "cat": "Industria Petrolera",     "catEn": "Oil & Gas Industry" },
+  { "file": "inner-seal-bop-.html",                 "name": "Inner Seal BOP",                                       "nameEn": "Inner Seal BOP",                                      "cat": "Industria Petrolera",     "catEn": "Oil & Gas Industry" },
+  { "file": "outer--seal-bop-.html",                "name": "Outer Seal BOP",                                       "nameEn": "Outer Seal BOP",                                      "cat": "Industria Petrolera",     "catEn": "Oil & Gas Industry" },
+  { "file": "oil-saver-1.html",                     "name": "Oil Saver",                                            "nameEn": "Oil Saver",                                           "cat": "Industria Petrolera",     "catEn": "Oil & Gas Industry" },
+  { "file": "ram-preventer-rubber.html",            "name": "Ram Preventer Rubber",                                 "nameEn": "Ram Preventer Rubber",                                "cat": "Industria Petrolera",     "catEn": "Oil & Gas Industry" },
+  { "file": "bop-ram-rod.html",                     "name": "BOP Ram Rod",                                          "nameEn": "BOP Ram Rod",                                         "cat": "Industria Petrolera",     "catEn": "Oil & Gas Industry" },
+  { "file": "bop-ram-1--.html",                     "name": "BOP Ram 1\"",                                          "nameEn": "BOP Ram 1\"",                                         "cat": "Industria Petrolera",     "catEn": "Oil & Gas Industry" },
+  { "file": "diaphragms-.html",                     "name": "Diaphragms",                                           "nameEn": "Diaphragms",                                          "cat": "Industria Petrolera",     "catEn": "Oil & Gas Industry" },
+  { "file": "hammer-unions-seals-1502-1.html",      "name": "Hammer Unions Seals 1502",                             "nameEn": "Hammer Unions Seals 1502",                            "cat": "Industria Petrolera",     "catEn": "Oil & Gas Industry" },
+  { "file": "packer-element.html",                  "name": "Packer Element",                                       "nameEn": "Packer Element",                                      "cat": "Industria Petrolera",     "catEn": "Oil & Gas Industry" },
+  { "file": "piston-seals.html",                    "name": "Piston Seals",                                         "nameEn": "Piston Seals",                                        "cat": "Industria Petrolera",     "catEn": "Oil & Gas Industry" },
+  { "file": "valve-cover-gasket--1.html",           "name": "Valve Cover Gasket",                                   "nameEn": "Valve Cover Gasket",                                  "cat": "Industria Petrolera",     "catEn": "Oil & Gas Industry" },
+  { "file": "buje-5--rueda-nuevo-holland.html",     "name": "Buje 5ª Rueda Nuevo Holland",                          "nameEn": "5th Wheel Bushing — New Holland",                      "cat": "Industria Automotriz",    "catEn": "Automotive Industry" },
+  { "file": "corbatin-barra-tensora.html",          "name": "Corbatín Barra Tensora",                               "nameEn": "Tension Bar Corbatín",                                "cat": "Industria Automotriz",    "catEn": "Automotive Industry" },
+  { "file": "buje-suspension-primaax.html",         "name": "Buje Suspensión PRIMAAX",                              "nameEn": "PRIMAAX Suspension Bushing",                          "cat": "Industria Automotriz",    "catEn": "Automotive Industry" },
+  { "file": "bujes-quinta-rueda-holland-.html",     "name": "Bujes Quinta Rueda Holland",                           "nameEn": "Holland Fifth Wheel Bushings",                        "cat": "Industria Automotriz",    "catEn": "Automotive Industry" },
+  { "file": "soportes-y-bujes-en-nylon.html",       "name": "Soportes y Bujes en Nylon",                            "nameEn": "Nylon Supports & Bushings",                           "cat": "Industria Automotriz",    "catEn": "Automotive Industry" },
+  { "file": "buje-quinta-rueda-fontaine.html",      "name": "Buje Quinta Rueda Fontaine",                           "nameEn": "Fontaine Fifth Wheel Bushing",                        "cat": "Industria Automotriz",    "catEn": "Automotive Industry" },
+  { "file": "guia-capo-kenworth.html",              "name": "Guía Capó Kenworth",                                   "nameEn": "Kenworth Hood Guide",                                 "cat": "Industria Automotriz",    "catEn": "Automotive Industry" },
+  { "file": "buje-quinta-rueda-nylon-y-bronce.html","name": "Buje Quinta Rueda Nylon y Bronce",                     "nameEn": "Fifth Wheel Nylon & Bronze Bushing",                  "cat": "Industria Automotriz",    "catEn": "Automotive Industry" },
+  { "file": "soporte-motor-kenworth.html",          "name": "Soporte Motor Kenworth",                               "nameEn": "Kenworth Engine Mount",                               "cat": "Industria Automotriz",    "catEn": "Automotive Industry" },
+  { "file": "bujes-tensor-y-balancin.html",         "name": "Bujes Tensor y Balancín",                              "nameEn": "Tensioner & Rocker Arm Bushings",                     "cat": "Industria Automotriz",    "catEn": "Automotive Industry" },
+  { "file": "media-luna-cauho-y-nylon.html",        "name": "Media Luna Caucho y Nylon",                            "nameEn": "Rubber & Nylon Half-Moon",                            "cat": "Industria Automotriz",    "catEn": "Automotive Industry" },
+  { "file": "soporte-dite---telefono-.html",        "name": "Soporte Dite (Teléfono)",                              "nameEn": "Dite Support (Phone)",                                "cat": "Industria Automotriz",    "catEn": "Automotive Industry" },
+  { "file": "gasket-manhole-20--16--dite.html",     "name": "Gasket Manhole 20\"-16\" Dite",                        "nameEn": "Gasket Manhole 20\"-16\" Dite",                       "cat": "Industria Automotriz",    "catEn": "Automotive Industry" },
+  { "file": "gasket-manhole-16--10-inca.html",      "name": "Gasket Manhole 16\" 10\" INCA",                        "nameEn": "Gasket Manhole 16\" 10\" INCA",                       "cat": "Industria Automotriz",    "catEn": "Automotive Industry" },
+  { "file": "gasket-manhole-20-16--l.html",         "name": "Gasket Manhole 20\"16\" L",                            "nameEn": "Gasket Manhole 20\" 16\" L",                          "cat": "Industria Automotriz",    "catEn": "Automotive Industry" },
+  { "file": "gasket-manhole-20--17--national-.html","name": "Gasket Manhole 20\" 17\" (National)",                  "nameEn": "Gasket Manhole 20\" 17\" (National)",                 "cat": "Industria Automotriz",    "catEn": "Automotive Industry" },
+  { "file": "apoyo-compuesto-en-neopreno.html",     "name": "Apoyo Compuesto en Neopreno (Refuerzo Interno)",       "nameEn": "Composite Neoprene Support (Internal Reinforcement)", "cat": "Construcción y Minería",  "catEn": "Construction & Mining" },
+  { "file": "apoyo-compuesto--en-neopreno_.html",   "name": "Apoyo Compuesto en Neopreno (Refuerzo Externo)",       "nameEn": "Composite Neoprene Support (External Reinforcement)", "cat": "Construcción y Minería",  "catEn": "Construction & Mining" },
+  { "file": "apoyo-simple-.html",                   "name": "Apoyo Simple",                                         "nameEn": "Simple Support",                                      "cat": "Construcción y Minería",  "catEn": "Construction & Mining" },
+  { "file": "topes-para-muelle.html",               "name": "Topes para Muelle",                                    "nameEn": "Dock Bumpers",                                        "cat": "Construcción y Minería",  "catEn": "Construction & Mining" },
+  { "file": "bridas.html",                          "name": "Bridas",                                               "nameEn": "Flanges",                                             "cat": "Construcción y Minería",  "catEn": "Construction & Mining" },
+  { "file": "empaque-para-mezcladora.html",         "name": "Empaque para Mezcladora",                              "nameEn": "Mixer Gasket",                                        "cat": "Construcción y Minería",  "catEn": "Construction & Mining" },
+  { "file": "planchas-anti-desgaste-dentadas.html", "name": "Planchas Anti Desgaste Dentadas",                      "nameEn": "Toothed Anti-Wear Plates",                            "cat": "Construcción y Minería",  "catEn": "Construction & Mining" },
+  { "file": "planchas-anti-desgaste-.html",         "name": "Planchas Anti Desgaste",                               "nameEn": "Anti-Wear Plates",                                    "cat": "Construcción y Minería",  "catEn": "Construction & Mining" },
+  { "file": "barras--de-impacto-.html",             "name": "Barras de Impacto",                                    "nameEn": "Impact Bars",                                         "cat": "Construcción y Minería",  "catEn": "Construction & Mining" }
 ];

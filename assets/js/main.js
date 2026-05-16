@@ -114,20 +114,26 @@
 
     searchInput.addEventListener('input', function () {
       var q = this.value.trim().toLowerCase();
+      var lang = getLang();
       selectedIdx = -1;
       if (q.length < 2) { searchResults.classList.remove('open'); searchResults.innerHTML = ''; return; }
       var hits = SEARCH_INDEX.filter(function (p) {
-        return p.name.toLowerCase().includes(q) || (p.nameEn && p.nameEn.toLowerCase().includes(q)) || (p.cat && p.cat.toLowerCase().includes(q));
+        return (p.name && p.name.toLowerCase().includes(q))
+            || (p.nameEn && p.nameEn.toLowerCase().includes(q))
+            || (p.cat && p.cat.toLowerCase().includes(q))
+            || (p.catEn && p.catEn.toLowerCase().includes(q));
       }).slice(0, 8);
       if (!hits.length) {
-        searchResults.innerHTML = '<div class="nsr-empty">Sin resultados</div>';
+        searchResults.innerHTML = '<div class="nsr-empty">' + (lang === 'en' ? 'No results' : 'Sin resultados') + '</div>';
         searchResults.classList.add('open');
         return;
       }
       searchResults.innerHTML = hits.map(function (p, i) {
-        var hl = p.name.replace(new RegExp('(' + q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'gi'), '<mark>$1</mark>');
+        var displayName = (lang === 'en' && p.nameEn) ? p.nameEn : p.name;
+        var displayCat = (lang === 'en' && p.catEn) ? p.catEn : (p.cat || '');
+        var hl = displayName.replace(new RegExp('(' + q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'gi'), '<mark>$1</mark>');
         return '<a class="nsr-item" href="' + p.file + '" data-idx="' + i + '">' +
-          '<span class="nsr-cat">' + (p.cat || '') + '</span>' + hl + '</a>';
+          '<span class="nsr-cat">' + displayCat + '</span>' + hl + '</a>';
       }).join('');
       searchResults.classList.add('open');
     });
@@ -227,10 +233,116 @@
     'prod.barrasDesc': { es: 'Barras de impacto en caucho para amortiguar el contacto en zonas de descarga y bandas transportadoras.', en: 'Rubber impact bars to cushion contact in discharge areas and conveyor belts.' },
   };
 
+  // Mapa archivo→{es,en} de nombres de producto, hubs e industrias.
+  // Fuente única de verdad para traducir h1, breadcrumb, listas, prod-cards, alt y title.
+  var PRODUCT_NAMES = {
+    'coiled-tubing-stripper-rubber.html':   { es: 'Coiled Tubing Stripper Rubber', en: 'Coiled Tubing Stripper Rubber' },
+    'rod-stripper-rubber.html':             { es: 'Rod Stripper Rubber', en: 'Rod Stripper Rubber' },
+    'swap-cups.html':                       { es: 'Swab Cups', en: 'Swab Cups' },
+    'packing-mud-bucked.html':              { es: 'Packing Mud Bucked', en: 'Packing Mud Bucked' },
+    'drill-pipe-wipers.html':               { es: 'Drill Pipe Wipers', en: 'Drill Pipe Wipers' },
+    'oil-saver.html':                       { es: 'Oil Saver', en: 'Oil Saver' },
+    'oil-saver-1.html':                     { es: 'Oil Saver', en: 'Oil Saver' },
+    'hammer-unions-seals-1502.html':        { es: 'Hammer Union Seals 1502', en: 'Hammer Union Seals 1502' },
+    'hammer-unions-seals-1502-1.html':      { es: 'Hammer Unions Seals 1502', en: 'Hammer Unions Seals 1502' },
+    'diaphragms.html':                      { es: 'Diaphragms', en: 'Diaphragms' },
+    'diaphragms-.html':                     { es: 'Diaphragms', en: 'Diaphragms' },
+    'valve-cover-gasket-.html':             { es: 'Valve Cover Gasket', en: 'Valve Cover Gasket' },
+    'valve-cover-gasket--1.html':           { es: 'Valve Cover Gasket', en: 'Valve Cover Gasket' },
+    'packing-seals.html':                   { es: 'Packing Seals', en: 'Packing Seals' },
+    'mechanical-seals.html':                { es: 'Mechanical Seals', en: 'Mechanical Seals' },
+    'ptfe-seals.html':                      { es: 'PTFE Seals', en: 'PTFE Seals' },
+    'mongoose-shale-shaker.html':           { es: 'Mongoose Shale Shaker', en: 'Mongoose Shale Shaker' },
+    'shale-shakers-gaskets.html':           { es: 'Shale Shakers Gaskets', en: 'Shale Shakers Gaskets' },
+    'rubber-support-shale.html':            { es: 'Rubber Support Shale', en: 'Rubber Support Shale' },
+    'pipe-rubber-gaskets.html':             { es: 'Pipe Rubber Gaskets', en: 'Pipe Rubber Gaskets' },
+    'pad-rubber-.html':                     { es: 'Pad Rubber', en: 'Pad Rubber' },
+    'thread-protectors.html':               { es: 'Thread Protectors', en: 'Thread Protectors' },
+    'regan-rubber-.html':                   { es: 'Regan Rubber', en: 'Regan Rubber' },
+    'sucker-rod-wipers.html':               { es: 'Sucker Rod Wipers', en: 'Sucker Rod Wipers' },
+    'vee-packing-stuffing-box.html':        { es: 'Vee Packing Stuffing Box', en: 'Vee Packing Stuffing Box' },
+    'valve-cover-seal.html':                { es: 'Valve Cover Seal', en: 'Valve Cover Seal' },
+    'rubber-piston-cup.html':               { es: 'Rubber Piston Cup', en: 'Rubber Piston Cup' },
+    'valve-insert.html':                    { es: 'Valve Insert', en: 'Valve Insert' },
+    'pack-off---line-wiper-rubbers.html':   { es: 'Pack Off & Line Wiper Rubbers', en: 'Pack Off & Line Wiper Rubbers' },
+    'stuffing-box-packing.html':            { es: 'Stuffing Box Packing', en: 'Stuffing Box Packing' },
+    'v-packing-seals.html':                 { es: 'V-Packing Seals', en: 'V-Packing Seals' },
+    'vee-packing-seals.html':               { es: 'Vee Packing Seals', en: 'Vee Packing Seals' },
+    'ram-bop-configuration.html':           { es: 'Ram BOP Configuration', en: 'Ram BOP Configuration' },
+    'inner-seal-bop-.html':                 { es: 'Inner Seal BOP', en: 'Inner Seal BOP' },
+    'outer--seal-bop-.html':                { es: 'Outer Seal BOP', en: 'Outer Seal BOP' },
+    'ram-preventer-rubber.html':            { es: 'Ram Preventer Rubber', en: 'Ram Preventer Rubber' },
+    'bop-ram-rod.html':                     { es: 'BOP Ram Rod', en: 'BOP Ram Rod' },
+    'bop-ram-1--.html':                     { es: 'BOP Ram 1"', en: 'BOP Ram 1"' },
+    'packer-element.html':                  { es: 'Packer Element', en: 'Packer Element' },
+    'piston-seals.html':                    { es: 'Piston Seals', en: 'Piston Seals' },
+    'buje-5--rueda-nuevo-holland.html':     { es: 'Buje 5ª Rueda Nuevo Holland', en: '5th Wheel Bushing — New Holland' },
+    'corbatin-barra-tensora.html':          { es: 'Corbatín Barra Tensora', en: 'Tension Bar Corbatín' },
+    'buje-suspension-primaax.html':         { es: 'Buje Suspensión PRIMAAX', en: 'PRIMAAX Suspension Bushing' },
+    'bujes-quinta-rueda-holland-.html':     { es: 'Bujes Quinta Rueda Holland', en: 'Holland Fifth Wheel Bushings' },
+    'soportes-y-bujes-en-nylon.html':       { es: 'Soportes y Bujes en Nylon', en: 'Nylon Supports & Bushings' },
+    'buje-quinta-rueda-fontaine.html':      { es: 'Buje Quinta Rueda Fontaine', en: 'Fontaine Fifth Wheel Bushing' },
+    'guia-capo-kenworth.html':              { es: 'Guía Capó Kenworth', en: 'Kenworth Hood Guide' },
+    'buje-quinta-rueda-nylon-y-bronce.html':{ es: 'Buje Quinta Rueda Nylon y Bronce', en: 'Fifth Wheel Nylon & Bronze Bushing' },
+    'soporte-motor-kenworth.html':          { es: 'Soporte Motor Kenworth', en: 'Kenworth Engine Mount' },
+    'bujes-tensor-y-balancin.html':         { es: 'Bujes Tensor y Balancín', en: 'Tensioner & Rocker Arm Bushings' },
+    'media-luna-cauho-y-nylon.html':        { es: 'Media Luna Caucho y Nylon', en: 'Rubber & Nylon Half-Moon' },
+    'soporte-dite---telefono-.html':        { es: 'Soporte Dite (Teléfono)', en: 'Dite Support (Phone)' },
+    'gasket-manhole-20--16--dite.html':     { es: 'Gasket Manhole 20"-16" Dite', en: 'Gasket Manhole 20"-16" Dite' },
+    'gasket-manhole-16--10-inca.html':      { es: 'Gasket Manhole 16" 10" INCA', en: 'Gasket Manhole 16" 10" INCA' },
+    'gasket-manhole-20-16--l.html':         { es: 'Gasket Manhole 20"16" L', en: 'Gasket Manhole 20" 16" L' },
+    'gasket-manhole-20--17--national-.html':{ es: 'Gasket Manhole 20" 17" (National)', en: 'Gasket Manhole 20" 17" (National)' },
+    'apoyo-compuesto-en-neopreno.html':     { es: 'Apoyo Compuesto en Neopreno (Refuerzo Interno)', en: 'Composite Neoprene Support (Internal Reinforcement)' },
+    'apoyo-compuesto--en-neopreno_.html':   { es: 'Apoyo Compuesto en Neopreno (Refuerzo Externo)', en: 'Composite Neoprene Support (External Reinforcement)' },
+    'apoyo-simple-.html':                   { es: 'Apoyo Simple', en: 'Simple Support' },
+    'topes-para-muelle.html':               { es: 'Topes para Muelle', en: 'Dock Bumpers' },
+    'bridas.html':                          { es: 'Bridas', en: 'Flanges' },
+    'empaque-para-mezcladora.html':         { es: 'Empaque para Mezcladora', en: 'Mixer Gasket' },
+    'planchas-anti-desgaste-dentadas.html': { es: 'Planchas Anti Desgaste Dentadas', en: 'Toothed Anti-Wear Plates' },
+    'planchas-anti-desgaste-.html':         { es: 'Planchas Anti Desgaste', en: 'Anti-Wear Plates' },
+    'barras--de-impacto-.html':             { es: 'Barras de Impacto', en: 'Impact Bars' }
+  };
+
+  var HUB_NAMES = {
+    'workover-coiled-tubing-wiper-rubber.html': { es: 'Workover - Coiled Tubing - Wiper Rubber', en: 'Workover - Coiled Tubing - Wiper Rubber' },
+    'solid-control-transport.html':             { es: 'Solid Control - Transport', en: 'Solid Control - Transport' },
+    'wireline-slickline.html':                  { es: 'Wireline - Slickline', en: 'Wireline - Slickline' }
+  };
+
+  var INDUSTRY_NAMES = {
+    'industria-petrolera.html':     { es: 'Industria Petrolera', en: 'Oil & Gas Industry' },
+    'industria-automotriz.html':    { es: 'Industria Automotriz', en: 'Automotive Industry' },
+    'construccion-y-mineria.html':  { es: 'Construcción y Minería', en: 'Construction & Mining' }
+  };
+
+  var PAGE_TITLES = {
+    'index.html':     { es: 'Productos Técnicos de Caucho', en: 'Technical Rubber Products' },
+    'empresa.html':   { es: 'Empresa', en: 'About' },
+    'clientes.html':  { es: 'Clientes', en: 'Clients' },
+    'contacto.html':  { es: 'Contacto', en: 'Contact' }
+  };
+
+  function getFilenameFromHref(href) {
+    if (!href) return null;
+    if (/^(https?:|mailto:|tel:|#)/i.test(href)) return null;
+    var clean = href.replace(/^\.\//, '').split(/[?#]/)[0];
+    var parts = clean.split('/');
+    return parts[parts.length - 1] || null;
+  }
+  function lookupName(filename) {
+    if (!filename) return null;
+    return PRODUCT_NAMES[filename] || HUB_NAMES[filename] || INDUSTRY_NAMES[filename] || null;
+  }
+  function getCurrentFilename() {
+    var p = (location.pathname || '').split('/').pop();
+    return (p && p.length) ? p : 'index.html';
+  }
+
   var LANG_KEY = 'rcav-lang';
   function getLang() { try { return localStorage.getItem(LANG_KEY) || 'es'; } catch (e) { return 'es'; } }
   function applyLang(lang) {
     document.documentElement.lang = lang;
+
     document.querySelectorAll('[data-i18n]').forEach(function (el) {
       var key = el.getAttribute('data-i18n');
       var entry = I18N[key];
@@ -243,6 +355,58 @@
       var entry = I18N[key];
       if (entry && entry[lang]) el.placeholder = entry[lang];
     });
+
+    // Traducir enlaces a páginas de producto/hub/industria que no tengan data-i18n.
+    document.querySelectorAll('a[href]').forEach(function (a) {
+      if (a.hasAttribute('data-i18n')) return;
+      var entry = lookupName(getFilenameFromHref(a.getAttribute('href')));
+      if (!entry || !entry[lang]) return;
+
+      // prod-card: traducir nombre y alt de la imagen
+      var nameEl = a.querySelector('.prod-card-name');
+      if (nameEl) nameEl.textContent = entry[lang];
+
+      var img = a.querySelector('img');
+      if (img) img.setAttribute('alt', entry[lang]);
+
+      // hub-card: traducir h3 si no tiene data-i18n
+      var h3 = a.querySelector('h3');
+      if (h3 && !h3.hasAttribute('data-i18n')) h3.textContent = entry[lang];
+
+      // Anchor con sólo texto (catálogo, breadcrumb intermedio)
+      if (!nameEl && !img && !h3 && a.children.length === 0) {
+        a.textContent = entry[lang];
+      }
+    });
+
+    // Página actual: h1, último span del breadcrumb, title.
+    var curFile = getCurrentFilename();
+    var curEntry = lookupName(curFile);
+    if (curEntry && curEntry[lang]) {
+      document.querySelectorAll('h1').forEach(function (h1) {
+        if (!h1.hasAttribute('data-i18n')) h1.textContent = curEntry[lang];
+      });
+      document.querySelectorAll('.breadcrumb').forEach(function (bc) {
+        var spans = bc.querySelectorAll(':scope > span');
+        var last = spans[spans.length - 1];
+        if (last && !last.hasAttribute('data-i18n') && !last.querySelector('a')) {
+          last.textContent = curEntry[lang];
+        }
+      });
+      document.title = curEntry[lang] + ' · Rubbercav S.A.S';
+
+      // En páginas de producto, reescribir el mensaje pre-rellenado de WhatsApp.
+      if (PRODUCT_NAMES[curFile]) {
+        var msgPrefix = lang === 'en' ? 'Hi, I am interested in the product: ' : 'Hola, me interesa el producto: ';
+        document.querySelectorAll('a[href*="wa.me"][href*="text="]').forEach(function (a) {
+          var href = a.getAttribute('href');
+          a.setAttribute('href', href.replace(/text=[^&]*/, 'text=' + encodeURIComponent(msgPrefix + curEntry[lang])));
+        });
+      }
+    } else if (PAGE_TITLES[curFile] && PAGE_TITLES[curFile][lang]) {
+      document.title = PAGE_TITLES[curFile][lang] + ' · Rubbercav S.A.S';
+    }
+
     document.querySelectorAll('.lang-btn').forEach(function (btn) {
       btn.classList.toggle('active', btn.dataset.lang === lang);
     });
