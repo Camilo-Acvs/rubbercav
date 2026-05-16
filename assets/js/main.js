@@ -2,26 +2,9 @@
   'use strict';
 
   /* ── POLYMERS BANNER ── */
-  const BANNER_KEY = 'rcav-banner-v1';
   const banner = document.getElementById('top-banner');
   if (banner) {
-    try {
-      if (localStorage.getItem(BANNER_KEY)) {
-        banner.remove();
-      } else {
-        document.body.classList.add('with-banner');
-        document.getElementById('btn-banner-close').addEventListener('click', function () {
-          banner.classList.add('hiding');
-          setTimeout(function () {
-            banner.remove();
-            document.body.classList.remove('with-banner');
-            try { localStorage.setItem(BANNER_KEY, '1'); } catch (e) {}
-          }, 350);
-        });
-      }
-    } catch (e) {
-      document.body.classList.add('with-banner');
-    }
+    document.body.classList.add('with-banner');
   }
 
   /* ── NAVBAR scroll ── */
@@ -176,7 +159,7 @@
     'industry.petrolera': { es: 'Industria Petrolera', en: 'Oil & Gas Industry' },
     'industry.automotriz': { es: 'Industria Automotriz', en: 'Automotive Industry' },
     'industry.construccion': { es: 'Construcción y Minería', en: 'Construction & Mining' },
-    'banner.text': { es: '<strong>Rubbercav S.A.S</strong> ahora también opera como <strong>Polymers Seals Solutions</strong> — Visite nuestro nuevo sitio', en: '<strong>Rubbercav S.A.S</strong> now also operates as <strong>Polymers Seals Solutions</strong> — Visit our new website' },
+    'banner.text': { es: '<strong>Rubbercav S.A.S</strong> ahora es <strong>Polymers Seals Solutions</strong> — Visite nuestro nuevo sitio', en: '<strong>Rubbercav S.A.S</strong> is now <strong>Polymers Seals Solutions</strong> — Visit our new website' },
     'banner.cta': { es: 'Ir al sitio', en: 'Go to site' },
     'home.prodTitle': { es: 'Productos', en: 'Products' },
     'home.viewAll': { es: 'Ver todos →', en: 'View all →' },
