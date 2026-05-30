@@ -422,11 +422,12 @@
 
   applyLang(getLang());
 
-  /* ── EMAILJS FORM ── */
+  /* ── FORMULARIO DE CONTACTO (FormSubmit) ── */
   var form = document.getElementById('contact-form');
   if (form) {
     form.addEventListener('submit', function (e) {
       e.preventDefault();
+      var cfg = window.FORM_CONFIG || {};
       var msg = document.getElementById('form-msg');
       var btn = form.querySelector('.form-submit');
       var origText = btn.textContent;
@@ -434,31 +435,48 @@
       btn.textContent = I18N['cont.fSending'][getLang()];
       if (msg) { msg.textContent = ''; msg.className = 'form-msg'; }
 
-      var params = {
-        from_name: form.querySelector('[name="name"]') ? form.querySelector('[name="name"]').value : '',
-        from_company: form.querySelector('[name="company"]') ? form.querySelector('[name="company"]').value : '',
-        reply_to: form.querySelector('[name="email"]') ? form.querySelector('[name="email"]').value : '',
-        phone: form.querySelector('[name="phone"]') ? form.querySelector('[name="phone"]').value : '',
-        message: form.querySelector('[name="message"]') ? form.querySelector('[name="message"]').value : '',
+      var get = function (n) {
+        var el = form.querySelector('[name="' + n + '"]');
+        return el ? el.value.trim() : '';
       };
 
-      if (typeof emailjs !== 'undefined' && window.EMAILJS_CONFIG) {
-        emailjs.send(window.EMAILJS_CONFIG.serviceId, window.EMAILJS_CONFIG.templateId, params, window.EMAILJS_CONFIG.publicKey)
-          .then(function () {
-            btn.disabled = false; btn.textContent = origText;
-            if (msg) { msg.textContent = I18N['cont.fOk'][getLang()]; msg.className = 'form-msg ok'; }
-            form.reset();
-          })
-          .catch(function () {
-            btn.disabled = false; btn.textContent = origText;
-            if (msg) { msg.textContent = I18N['cont.fErr'][getLang()]; msg.className = 'form-msg err'; }
-          });
-      } else {
-        setTimeout(function () {
-          btn.disabled = false; btn.textContent = origText;
-          if (msg) { msg.textContent = 'EmailJS no configurado. Escríbanos a info@polymers-seals.com'; msg.className = 'form-msg err'; }
-        }, 800);
+      var payload = {
+        _subject:  cfg.subject || 'Nuevo mensaje desde la web',
+        _template: 'table',
+        _captcha:  'false',
+        _replyto:  get('email'),
+        'Nombre':   get('name'),
+        'Empresa':  get('company') || '—',
+        'Correo':   get('email'),
+        'Teléfono': get('phone') || '—',
+        'Mensaje':  get('message'),
+        _honey:     get('_honey'), // honeypot anti-spam: si viene lleno, FormSubmit lo descarta
+      };
+
+      function done(ok) {
+        btn.disabled = false; btn.textContent = origText;
+        if (msg) {
+          msg.textContent = ok ? I18N['cont.fOk'][getLang()] : I18N['cont.fErr'][getLang()];
+          msg.className = 'form-msg ' + (ok ? 'ok' : 'err');
+        }
+        if (ok) form.reset();
       }
+
+      // Si aún no se ha puesto el correo destino, avisar en lugar de fallar en silencio.
+      if (!cfg.email || cfg.email.indexOf('REEMPLAZAR') === 0) {
+        done(false);
+        if (msg) { msg.textContent = 'Formulario sin configurar: falta el correo en assets/js/form-config.js'; }
+        return;
+      }
+
+      fetch('https://formsubmit.co/ajax/' + encodeURIComponent(cfg.email), {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(payload)
+      })
+        .then(function (r) { return r.json(); })
+        .then(function (data) { done(String(data.success) === 'true'); })
+        .catch(function () { done(false); });
     });
   }
 
